@@ -3,7 +3,7 @@ class Person
   attr_reader :id
   attr_accessor :name, :age, :parent_permission
 
-  def initialize(age, name = 'Unknown', parent_permission = true)
+  def initialize(age, name = 'Unknown', parent_permission = 'true')
     @id = Time.now.to_i
     @name = name
     @age = age
@@ -17,7 +17,7 @@ class Person
   end
 
   def can_use_services?
-    return true if of_age? || @parent_permission
+    return true if of_age? || @parent_permission == 'true'
 
     false
   end
