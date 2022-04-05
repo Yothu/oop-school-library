@@ -1,4 +1,4 @@
-require './person_class'
+require './person'
 
 # Teacher Class
 class Teacher < Person
