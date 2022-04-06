@@ -153,6 +153,7 @@ class App
       menu_option = main_menu.to_i
       running = options(menu_option)
 
+      puts 'Thank you for using this app!'
       break unless running
     end
   end
