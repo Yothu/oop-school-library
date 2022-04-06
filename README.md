@@ -64,7 +64,7 @@ cd /oop-school-library
 To use run the decode method use this command:
 
 ```
-ruby ./person_class.rb
+ruby ./main.rb
 ```
 ## Author
 
