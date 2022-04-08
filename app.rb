@@ -14,7 +14,7 @@ require './add_person_menu'
 
 # App class
 class App
-  attr_accessor :books, :rentals, :persons
+  attr_accessor :rentals, :persons
 
   def initialize
     @books = []
