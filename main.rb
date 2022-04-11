@@ -6,6 +6,3 @@ def main
 end
 
 main
-
-# hello
-
