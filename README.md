@@ -74,6 +74,13 @@ ruby ./main.rb
 - Twiter:   [@Daivhy](https://twitter.com/Daivhy)
 - LinkedIn: [David Vergaray](https://www.linkedin.com/in/david-vergaray-almontes-051a11127/)
 
+## Colaborators
+
+👤 **Aime Malaika**
+- GitHub:   [@aimemalaika](https://github.com/aimemalaika)
+- Twitter:  [@aimemalaika](https://twitter.com/Aime_Malaika)
+- LinkedIn: [aimemalaika](https://linkedin.com/in/aimemalaika) 
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
