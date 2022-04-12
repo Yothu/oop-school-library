@@ -12,20 +12,18 @@ require './new_positive_number'
 require './main_menu'
 require './add_person_menu'
 
+require './book_list'
+
 # App class
 class App
-  attr_accessor :books, :rentals, :persons
+  attr_accessor :book_list, :rentals, :persons
 
   def initialize
-    @books = []
+    @book_list = BookList.new
     @rentals = []
     @persons = []
   end
 
-  def list_books
-    books.each { |book| puts "Title: \"#{book.title}\", Author: \"#{book.author}\"" }
-    puts
-  end
 
   def list_persons
     persons.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
@@ -59,26 +57,6 @@ class App
       create_student
     when '2' # Teacher
       create_teacher
-    end
-  end
-
-  def create_book
-    title = new_string { 'Title: ' }
-    author = new_string { 'Author: ' }
-
-    new_book = Book.new(title, author)
-
-    puts 'Book created successfully' if new_book.instance_of?(Book)
-
-    books << new_book
-  end
-
-  def list_books_indexes
-    puts 'Select a book from the following list by number'
-    index = 0
-    books.each do |book|
-      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
-      index += 1
     end
   end
 
@@ -124,10 +102,10 @@ class App
   end
 
   def books_and_persons_menus(option)
-    list_books if option == 1
+    book_list.print_books if option == 1
     list_persons if option == 2
     create_person if option == 3
-    create_book if option == 4
+    book_list.create_book if option == 4
   end
 
   def rentals_menus(option)
