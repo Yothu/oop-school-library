@@ -1,8 +1,11 @@
 require './manage_books'
 require './manage_persons'
 require './manage_rentals'
+require './manage_files'
 
 class Options
+  include ManageFiles
+
   attr_accessor :book_list, :rental_list, :person_list
 
   def initialize

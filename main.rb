@@ -20,6 +20,7 @@ class App
 
       break unless running
     end
+    options.save_data
   end
 end
 

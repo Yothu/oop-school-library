@@ -8,7 +8,7 @@ class Person < Nameable
 
   def initialize(age, name = 'Unknown', parent_permission = 'true')
     super()
-    @id = Time.now.to_i
+    @id = Time.now.to_f.to_s
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -33,6 +33,12 @@ class Person < Nameable
 
   def add_rental(date, book)
     Rental.new(date, self, book)
+  end
+
+  def return_rentals_ids
+    ids = []
+    rentals.each { |rental| ids << rental.id }
+    ids
   end
 
   public :can_use_services?
