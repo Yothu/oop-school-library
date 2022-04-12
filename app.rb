@@ -1,8 +1,3 @@
-require './book'
-require './student'
-require './teacher'
-require './rental'
-
 require './new_index'
 require './user_input'
 require './new_string'
@@ -13,43 +8,17 @@ require './main_menu'
 require './add_person_menu'
 
 require './book_list'
-
 require './manage_person'
+require './manage_rentals'
 
 # App class
 class App
-  attr_accessor :book_list, :rentals, :person_list
+  attr_accessor :book_list, :rental_list, :person_list
 
   def initialize
     @book_list = BookList.new
-    @rentals = []
+    @rental_list = ManageRentals.new
     @person_list = ManagePerson.new
-  end
-
-  def create_rental
-    book_list.list_books_indexes
-    book = book_list.return_books_array[new_index(book_list.return_books_array)]
-
-    person_list.list_persons_indexes
-    person = person_list.return_persons_array[new_index(person_list.return_persons_array)]
-
-    date = new_string { 'Date: ' }
-
-    new_rental = Rental.new(date, person, book)
-    puts 'Rental created successfully' if new_rental.instance_of?(Rental)
-
-    rentals << new_rental
-  end
-
-  def list_rentals_by_person_id
-    person = person_list.person_by_id
-
-    return unless person.instance_of?(Student) || person.instance_of?(Teacher)
-
-    puts 'Rentals:'
-    person.rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
-    end
   end
 
   def books_and_persons_menus(option)
@@ -60,8 +29,8 @@ class App
   end
 
   def rentals_menus(option)
-    create_rental if option == 5
-    list_rentals_by_person_id if option == 6
+    rental_list.create_rental(book_list, person_list) if option == 5
+    rental_list.list_rentals_by_person_id(person_list) if option == 6
   end
 
   def options(menu_option)
@@ -86,4 +55,6 @@ class App
       break unless running
     end
   end
+
+  
 end

@@ -1,3 +1,7 @@
+require './person'
+require './student'
+require './teacher'
+
 class ManagePerson
   attr_accessor :persons
 
