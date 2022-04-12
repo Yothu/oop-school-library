@@ -1,5 +1,3 @@
-require './user_input'
-
 def main_menu
   puts 'Please choose an option by entering a number:'
   puts '1 - List all books'
@@ -9,5 +7,4 @@ def main_menu
   puts '5 - Create a rental'
   puts '6 - List all rentals for a given person id'
   puts '7 - Exit'
-  user_input
 end
