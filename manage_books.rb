@@ -1,10 +1,12 @@
 require_relative 'book'
+require_relative 'input'
 
 class BookList
-  attr_accessor :books
+  attr_accessor :books, :input
 
   def initialize
     @books = []
+    @input = Input.new
   end
 
   def return_books_array
@@ -12,8 +14,8 @@ class BookList
   end
 
   def create_book
-    title = new_string { 'Title: ' }
-    author = new_string { 'Author: ' }
+    title = input.text { 'Title: ' }
+    author = input.text { 'Author: ' }
 
     new_book = Book.new(title, author)
 

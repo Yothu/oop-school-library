@@ -1,18 +1,8 @@
-require './new_index'
-require './user_input'
-require './new_string'
-require './new_y_n_response'
-require './new_positive_number'
-
-require './main_menu'
-require './add_person_menu'
-
-require './book_list'
-require './manage_person'
+require './manage_books'
+require './manage_persons'
 require './manage_rentals'
 
-# App class
-class App
+class Options
   attr_accessor :book_list, :rental_list, :person_list
 
   def initialize
@@ -33,7 +23,7 @@ class App
     rental_list.list_rentals_by_person_id(person_list) if option == 6
   end
 
-  def options(menu_option)
+  def category_menu(menu_option)
     running = true
     if menu_option.positive? && menu_option <= 4
       books_and_persons_menus(menu_option)
@@ -41,18 +31,8 @@ class App
       rentals_menus(menu_option)
     elsif menu_option == 7
       running = false
+      puts 'Thank you for using this app!'
     end
     running
-  end
-
-  def run
-    puts 'Welcome to School Library App!'
-    loop do
-      menu_option = main_menu.to_i
-      running = options(menu_option)
-
-      puts 'Thank you for using this app!'
-      break unless running
-    end
   end
 end

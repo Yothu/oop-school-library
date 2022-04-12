@@ -1,12 +1,14 @@
 require './person'
 require './student'
 require './teacher'
+require './input'
 
 class ManagePerson
-  attr_accessor :persons
+  attr_accessor :persons, :input
 
   def initialize
     @persons = []
+    @input = Input.new
   end
 
   def return_persons_array
@@ -19,9 +21,9 @@ class ManagePerson
   end
 
   def create_teacher
-    age = new_positive_number { 'Age: ' }
-    name = new_string { 'Name: ' }
-    specialization = new_string { 'Specialization: ' }
+    age = input.natural_int { 'Age: ' }
+    name = input.text { 'Name: ' }
+    specialization = input.text { 'Specialization: ' }
 
     new_teacher = Teacher.new(specialization, age, name)
     puts 'Person created successfully' if new_teacher.instance_of?(Teacher)
@@ -29,9 +31,9 @@ class ManagePerson
   end
 
   def create_student
-    age = new_positive_number { 'Age: ' }
-    name = new_string { 'Name: ' }
-    permission = new_y_n_response { 'Has parent permission? [Y/N]: ' }
+    age = input.natural_int { 'Age: ' }
+    name = input.text { 'Name: ' }
+    permission = input.y_n { 'Has parent permission? [Y/N]: ' }
 
     new_student = Student.new(age, name, permission)
     puts 'Person created successfully' if new_student.instance_of?(Student)
@@ -39,7 +41,8 @@ class ManagePerson
   end
 
   def create_person
-    add_person_option = add_person_menu
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]:'
+    add_person_option = input.user_input
     case add_person_option
     when '1' # Student
       create_student
@@ -50,7 +53,7 @@ class ManagePerson
 
   def person_by_id
     print 'ID of person: '
-    id = user_input
+    id = input.user_input
     persons.each { |person| return person if person.id == id.to_i }
   end
 
