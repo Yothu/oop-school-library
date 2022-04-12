@@ -6,9 +6,9 @@ class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age, :parent_permission, :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission = 'true')
+  def initialize(age, name = 'Unknown', parent_permission = 'true', id = Time.now.to_f.to_s)
     super()
-    @id = Time.now.to_f.to_s
+    @id = id
     @name = name
     @age = age
     @parent_permission = parent_permission

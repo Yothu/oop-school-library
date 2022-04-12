@@ -2,8 +2,8 @@
 class Book
   attr_accessor :title, :author, :rentals, :id
 
-  def initialize(title, author)
-    @id = Time.now.to_f.to_s
+  def initialize(title, author, id = Time.now.to_f.to_s)
+    @id = id
     @title = title
     @author = author
     @rentals = []

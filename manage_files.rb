@@ -1,10 +1,28 @@
 require 'json'
+require './book'
 
 module ManageFiles
   def create_nonexistent_files
     files_names = ['persons.json', 'books.json', 'rentals.json']
     files_names.each do |file_name|
       File.new(file_name, 'w') unless File.exist?(file_name)
+    end
+  end
+
+  def from_json_to_obj(line)
+    JSON.parse(line)
+  end
+
+  def obtain_books
+    file_path = 'books.json'
+    if File.exist?(file_path)
+      File.readlines(file_path).each do |line|
+        book_data = from_json_to_obj(line)
+        new_book = Book.new(book_data['title'], book_data['author'], book_data['id'])
+        book_list.add_book(new_book)
+      end
+    else
+      File.new('books.json', 'w')
     end
   end
 
