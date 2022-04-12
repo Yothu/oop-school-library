@@ -7,6 +7,10 @@ class BookList
     @books = []
   end
 
+  def return_books_array
+    books
+  end
+
   def create_book
     title = new_string { 'Title: ' }
     author = new_string { 'Author: ' }
