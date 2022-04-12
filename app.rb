@@ -55,6 +55,4 @@ class App
       break unless running
     end
   end
-
-  
 end
