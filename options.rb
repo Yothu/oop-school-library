@@ -1,10 +1,12 @@
 require './manage_books'
 require './manage_persons'
 require './manage_rentals'
-require './manage_files'
+require './save_data'
+require './obtain_data'
 
 class Options
-  include ManageFiles
+  include SaveData
+  include ObtainData
 
   attr_accessor :book_list, :rental_list, :person_list
 

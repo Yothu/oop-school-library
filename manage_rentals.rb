@@ -24,6 +24,10 @@ class ManageRentals
     rentals << new_rental
   end
 
+  def add_rental(rental)
+    rentals << rental
+  end
+
   def list_rentals_by_person_id(person_list)
     person = person_list.person_by_id
 
