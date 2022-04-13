@@ -40,7 +40,4 @@ class Person < Nameable
     rentals.each { |rental| ids << rental.id }
     ids
   end
-
-  public :can_use_services?
-  private :of_age?
 end
