@@ -35,7 +35,6 @@ module ManageFiles
         person_data = from_json_to_obj(line)
         case person_data['type']
         when 'Student'
-          puts person_data
           new_person = Student.new(person_data['age'], person_data['name'], person_data['parent_permission'],
                                    person_data['id'])
         when 'Teacher'
