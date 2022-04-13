@@ -51,10 +51,18 @@ class ManagePerson
     end
   end
 
+  def add_person(person)
+    persons << person
+  end
+
   def person_by_id
     print 'ID of person: '
     id = input.user_input
-    persons.each { |person| return person if person.id == id.to_i }
+    persons.each { |person| return person if person.id.to_s == id.to_s }
+  end
+
+  def return_by_id(id)
+    persons.each { |person| return person if person.id.to_s == id.to_s }
   end
 
   def list_persons_indexes

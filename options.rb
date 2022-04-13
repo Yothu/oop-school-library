@@ -1,8 +1,13 @@
 require './manage_books'
 require './manage_persons'
 require './manage_rentals'
+require './save_data'
+require './obtain_data'
 
 class Options
+  include SaveData
+  include ObtainData
+
   attr_accessor :book_list, :rental_list, :person_list
 
   def initialize

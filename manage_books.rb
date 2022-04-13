@@ -33,6 +33,10 @@ class BookList
     puts
   end
 
+  def return_by_id(id)
+    books.each { |book| return book if book.id.to_s == id.to_s }
+  end
+
   def list_books_indexes
     puts 'Select a book from the following list by number'
     index = 0
