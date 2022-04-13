@@ -12,7 +12,6 @@ class Options
     @book_list = BookList.new
     @rental_list = ManageRentals.new
     @person_list = ManagePerson.new
-    obtain_books
   end
 
   def books_and_persons_menus(option)

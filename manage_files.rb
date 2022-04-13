@@ -19,6 +19,7 @@ module ManageFiles
     file_path = 'books.json'
     if File.exist?(file_path)
       File.readlines(file_path).each do |line|
+        puts 'line'
         book_data = from_json_to_obj(line)
         new_book = Book.new(book_data['title'], book_data['author'], book_data['id'])
         book_list.add_book(new_book)
