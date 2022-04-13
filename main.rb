@@ -13,6 +13,7 @@ class App
 
   def run
     puts 'Welcome to School Library App!'
+    options.obtain_data
     loop do
       main_menu
       menu_option = input.user_input.to_i

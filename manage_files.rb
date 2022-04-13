@@ -1,5 +1,7 @@
 require 'json'
 require './book'
+require './teacher'
+require './student'
 
 module ManageFiles
   def create_nonexistent_files
@@ -26,29 +28,45 @@ module ManageFiles
     end
   end
 
+  def obtain_persons
+    file_path = 'persons.json'
+    if File.exist?(file_path)
+      File.readlines(file_path).each do |line|
+        person_data = from_json_to_obj(line)
+        case person_data['type']
+        when 'Student'
+          puts person_data
+          new_person = Student.new(person_data['age'], person_data['name'], person_data['parent_permission'],
+                                   person_data['id'])
+        when 'Teacher'
+          new_person = Teacher.new(person_data['specialization'], person_data['age'], person_data['name'], true,
+                                   person_data['id'])
+        end
+        person_list.add_person(new_person)
+      end
+    else
+      File.new('persons.json', 'w')
+    end
+  end
+
   def transform_to_json(line)
     JSON.generate(line)
+  end
+
+  def preapare_person_line(person)
+    line = { id: person.id,
+             type: person.class,
+             name: person.name,
+             age: person.age }
+    line['parent_permission'] = person.parent_permission if person.instance_of?(Student)
+    line['specialization'] = person.specialization if person.instance_of?(Teacher)
+    line
   end
 
   def save_persons
     File.truncate('persons.json', 0)
     person_list.persons.each do |person|
-      line = if person.instance_of?(Student)
-               { id: person.id,
-                 type: person.class,
-                 name: person.name,
-                 age: person.age,
-                 parent_permission: person.parent_permission,
-                 rentals: person.return_rentals_ids }
-             else
-               { id: person.id,
-                 type: person.class,
-                 name: person.name,
-                 age: person.age,
-                 specialization: person.specialization,
-                 rentals: person.return_rentals_ids }
-             end
-
+      line = preapare_person_line(person)
       json_line = transform_to_json(line)
       File.write('persons.json', "#{json_line}\n", mode: 'a')
     end
@@ -79,6 +97,11 @@ module ManageFiles
     end
   end
 
+  def obtain_data
+    obtain_books
+    obtain_persons
+  end
+
   def save_data
     create_nonexistent_files
     save_persons
@@ -86,3 +109,5 @@ module ManageFiles
     save_rentals
   end
 end
+
+# rentals: person.return_rentals_ids
