@@ -47,7 +47,7 @@ describe Person do
     it 'should add a rental to the rentals array' do
       person = Person.new(17, 'Johnny')
       book = Book.new('The Hobbit', 'Tolkien')
-      person.add_rental('01/01/2017', person, book)
+      person.add_rental('01/01/2017', book)
       expect(person.rentals.length).to eq 1
     end
   end
