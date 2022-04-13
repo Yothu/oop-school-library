@@ -1,3 +1,5 @@
+require './classroom'
+
 describe Classroom do
   describe '#initialize' do
     it 'should be a Classroom object' do
