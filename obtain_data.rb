@@ -48,10 +48,25 @@ module ObtainData
     end
   end
 
+  def obtain_rentals
+    file_path = 'rentals.json'
+    if File.exist?(file_path)
+      File.readlines(file_path).each do |line|
+        rentals_data = from_json_to_obj(line)
+        book = book_list.return_by_id(rentals_data['book'])
+        person = person_list.return_by_id(rentals_data['person'])
+        new_rental = Rental.new(rentals_data['date'], person, book, rentals_data['id'])
+        rental_list.add_rental(new_rental)
+      end
+    else
+      File.new('rentals.json', 'w')
+    end
+  end
+
   def obtain_data
     create_nonexistent_files
     obtain_books
     obtain_persons
-    # obtain_rentals
+    obtain_rentals
   end
 end
