@@ -6,7 +6,7 @@ describe Solver do
       solver = Solver.new
       result = solver.factorial(3)
 
-      expect(result).to be 6
+      expect(result).to eq(6)
     end
   end
 end
