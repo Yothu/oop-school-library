@@ -77,5 +77,12 @@ describe Solver do
 
       expect(result).to eql('fizzbuzz')
     end
+
+    it 'should return fizz when gets a 6' do
+      solver = Solver.new
+      result = solver.fizzbuzz(6)
+
+      expect(result).to eql('fizz')
+    end
   end
 end
