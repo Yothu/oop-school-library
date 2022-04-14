@@ -98,5 +98,12 @@ describe Solver do
 
       expect(result).to eql('7')
     end
+
+    it 'should return fizzbuzz when gets a 30' do
+      solver = Solver.new
+      result = solver.fizzbuzz(30)
+
+      expect(result).to eql('fizzbuzz')
+    end
   end
 end
