@@ -30,7 +30,7 @@ describe Solver do
       expect(result).to eq(1)
     end
     
-    it 'A negative facotrial shouls raise an execption' do
+    it 'A negative factorial should raise an execption' do
       subject = Solver.new
       expect { subject.factorial(-1) }.to raise_error(StandardError)
     end
