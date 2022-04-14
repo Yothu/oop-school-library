@@ -8,5 +8,12 @@ describe Solver do
 
       expect(result).to eq(6)
     end
+
+    it 'the factorial of 2 should be 2' do
+      solver = Solver.new
+      result = solver.factorial(2)
+
+      expect(result).to eq(2)
+    end
   end
 end
