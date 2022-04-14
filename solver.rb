@@ -16,6 +16,6 @@ class Solver
   end
 
   def fizzbuzz(num)
-    
+    'fizz'
   end
 end
