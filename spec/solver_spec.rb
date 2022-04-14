@@ -29,7 +29,7 @@ describe Solver do
 
       expect(result).to eq(1)
     end
-    
+
     it 'A negative factorial should raise an execption' do
       subject = Solver.new
       expect { subject.factorial(-1) }.to raise_error(StandardError)
@@ -53,6 +53,15 @@ describe Solver do
       solver = Solver.new
       result = solver.reverse('Node.js is different from Ruby on Rails')
       expect(result).to eq('sliaR no ybuR morf tnereffid si sj.edoN')
+    end
+  end
+
+  describe '#fizzbuzz' do
+    it 'should return fizz when gets a 3' do
+      solver = Solver.new
+      result = solver.fizzbuzz(3)
+
+      expect(result).to eql('fizz')
     end
   end
 end
