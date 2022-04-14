@@ -1,6 +1,6 @@
 class Solver
   def factorial(num)
-    return 1 if num.zero?
+    raise StandardError if num.negative?
 
     i = num - 1
     while i.positive?
