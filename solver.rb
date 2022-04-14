@@ -12,6 +12,6 @@ class Solver
   end
 
   def reverse(str)
-    'olleh'
+    str.reverse
   end
 end

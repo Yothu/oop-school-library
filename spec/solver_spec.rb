@@ -48,5 +48,11 @@ describe Solver do
       result = solver.reverse('Aime')
       expect(result).to eq('emiA')
     end
+
+    it 'should return the reverse of "Node.js is different from Ruby on Rails"' do
+      solver = Solver.new
+      result = solver.reverse('Node.js is different from Ruby on Rails')
+      expect(result).to eq('sliaR no ybuR morf tnereffid si sj.edoN')
+    end
   end
 end
