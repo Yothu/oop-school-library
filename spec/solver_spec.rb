@@ -35,4 +35,12 @@ describe Solver do
       expect { subject.factorial(-1) }.to raise_error(StandardError)
     end
   end
+  
+  describe '#reverse' do
+    it 'should reverse a string' do
+      solver = Solver.new
+      result = solver.reverse('hello')
+      expect(result).to eq('olleh')
+    end
+  end
 end
