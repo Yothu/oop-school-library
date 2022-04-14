@@ -10,4 +10,8 @@ class Solver
     end
     num
   end
+
+  def reverse
+    
+  end
 end
