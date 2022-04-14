@@ -105,5 +105,19 @@ describe Solver do
 
       expect(result).to eql('fizzbuzz')
     end
+
+    it 'should return fizzbuzz when gets a 0' do
+      solver = Solver.new
+      result = solver.fizzbuzz(0)
+
+      expect(result).to eql('fizzbuzz')
+    end
+
+    it 'should return "-1" when gets a -1' do
+      solver = Solver.new
+      result = solver.fizzbuzz(-1)
+
+      expect(result).to eql('-1')
+    end
   end
 end
