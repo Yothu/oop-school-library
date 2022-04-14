@@ -11,7 +11,7 @@ class Solver
     num
   end
 
-  def reverse
+  def reverse(str)
     
   end
 end
