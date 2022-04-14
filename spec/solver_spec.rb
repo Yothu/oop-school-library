@@ -15,5 +15,19 @@ describe Solver do
 
       expect(result).to eq(2)
     end
+
+    it 'the factorial of 1 should be 1' do
+      solver = Solver.new
+      result = solver.factorial(1)
+
+      expect(result).to eq(1)
+    end
+
+    it 'the factorial of 0 should be 1' do
+      solver = Solver.new
+      result = solver.factorial(0)
+
+      expect(result).to eq(1)
+    end
   end
 end
